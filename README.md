@@ -1,7 +1,7 @@
 Simple Webpack boilerplate
 ==
 
-What for it?
+What for is it?
 --
 
 This is boilerplate for simple ES6 vanilla js project. It is not for React or something else, it is for regular web pages. Also it can be simply integrated into an existing project (PHP site for example)
@@ -14,10 +14,18 @@ What is included?
 
 How to
 --
-Just clone the repository and install dependencies:
+You can add this repository as remote one for existing project:
+```
+git init
+git remote add boilerplate git@github.com:denisinvader/simple-webpack-boilerplate.git
+git pull boilerplate master
+
+```
+Or just clone the repository and install dependencies:
 ```
 npm install
 ```
+
 Then you can run webpack watcher and edit sources in `src` folder:
 ```
 npm run watch
