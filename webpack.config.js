@@ -3,9 +3,21 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/main.js'),
+  entry: [
+    'babel-polyfill',
+    path.resolve(__dirname, 'src/main.js')
+  ],
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: 'scripts.js'
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
   module:{
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -13,16 +25,20 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        loader: ExtractTextPlugin.extract(
-          'style',
-          'css!postcss!sass'
-        )
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader!postcss-loader!sass-loader'
+        })
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+        loader: 'url-loader?limit=1000000',
+      },
+      {
+        test: /\.(eot|ttf|wav|mp3)$/,
+        loader: 'file-loader',
       }
     ]
-  },
-  output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'scripts.js'
   },
   plugins: [
     new ExtractTextPlugin('styles.css')
