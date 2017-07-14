@@ -1,9 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: __dirname + '/src/main.js',
+  entry: path.resolve(__dirname, 'src/main.js'),
   module:{
     loaders: [
       {
@@ -21,7 +21,7 @@ module.exports = {
     ]
   },
   output: {
-    path: __dirname + '/build',
+    path: path.resolve(__dirname, 'build'),
     filename: 'scripts.js'
   },
   plugins: [
