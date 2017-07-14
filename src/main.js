@@ -1,8 +1,8 @@
-require('./styles/main.scss');
+import Vue from 'vue';
+import App from './App';
 
-(() => {
-  const rootElement = document.getElementById('root');
-
-  rootElement.textContent = 'Text has been changed';
-  console.log(rootElement);
-})();
+new Vue({
+  el: '#app',
+  template: '<App/>',
+  components: { App }
+});
