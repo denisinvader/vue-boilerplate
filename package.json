@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "prod": "webpack --config webpack-production.config.js -p"
+    "prod": "NODE_ENV='production' webpack -p"
   },
   "author": "Mikhail Panichev",
   "license": "ISC",
